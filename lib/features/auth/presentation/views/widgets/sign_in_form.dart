@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/core/widgets/custom_password_text_field.dart';
 import 'package:flutter_application_1/core/widgets/custom_text_form_field.dart';
 
 class SignInForm extends StatefulWidget {
@@ -32,6 +33,14 @@ class _SignInFormState extends State<SignInForm> {
             hintText: 'Enter your email',
             warningText: 'Please enter your email!',
           ),
+          const SizedBox(height: 15),
+          CustomPasswordTextField(
+            textController: _passwordController,
+            label: 'Password',
+            hintText: 'Enter your password',
+            warningText: 'Please enter your password!',
+          ),
+          
         ],
       ),
     );
