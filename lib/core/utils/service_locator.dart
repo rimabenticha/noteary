@@ -1,0 +1,31 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_application_1/core/utils/auth_services.dart';
+import 'package:flutter_application_1/features/auth/data/repos/auth_repo_impl.dart';
+import 'package:get_it/get_it.dart';
+
+final getIt = GetIt.instance;
+
+void setup() {
+  getIt.registerSingleton<FirebaseAuth>(FirebaseAuth.instance);
+  getIt.registerSingleton<FirebaseFirestore>(FirebaseFirestore.instance);
+  //getIt.registerSingleton<Uuid>(const Uuid());
+
+  getIt.registerSingleton<AuthServices>(AuthServices());
+  //getIt.registerSingleton<FirebaseServices>(FirebaseServices());
+
+  getIt.registerSingleton<AuthRepoImpl>(
+    AuthRepoImpl(authService: getIt.get<AuthServices>()),
+  );
+
+  // getIt.registerSingleton<HomeRepoImpl>(
+  //   //HomeRepoImpl(HomeRemoteDataSourceImpl()),
+  // );
+
+  //  // getIt.registerSingleton<SettingsRepoImpl>(
+  //     //SettingsRepoImpl(
+  //       SettingsRemoteDataSourceImpl(),
+  //       authService: getIt.get<AuthServices>(),
+  //     ),
+  //   );
+}
