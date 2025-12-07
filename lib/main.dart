@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/utils/app_router.dart';
-import 'package:flutter_application_1/core/utils/service_locator.dart';
 
 void main() {
-  setup();
+  //setup();
   runApp(const Noteary());
 }
 

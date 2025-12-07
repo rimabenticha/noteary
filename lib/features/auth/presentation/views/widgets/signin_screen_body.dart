@@ -12,16 +12,15 @@ class SigninScreenBody extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       child: Column(
         children: [
-          SizedBox(height: MediaQuery.of(context).size.height * 0.085),
-
-          const Image(
-            image: AssetImage(AssetsData.signInIllustration),
-            width: 200,
-          ),
-
+          SizedBox(height: MediaQuery.of(context).size.height * 0.075),
           Text(
             'Sign in',
             style: Styles.textStyle28.copyWith(fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 10),
+          const Image(
+            image: AssetImage(AssetsData.signInIllustration),
+            width: 250,
           ),
 
           const SignInForm(),
