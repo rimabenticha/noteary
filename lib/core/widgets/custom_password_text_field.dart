@@ -8,6 +8,7 @@ class CustomPasswordTextField extends StatefulWidget {
     required this.label,
     required this.hintText,
     required this.warningText,
+    required String? Function(value) validator,
   });
 
   final TextEditingController textController;
