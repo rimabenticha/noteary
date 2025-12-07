@@ -19,6 +19,27 @@ class SigninScreenBody extends StatelessWidget {
           ),
 
           const SignInForm(),
+
+          const SizedBox(height: 4),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Don\'t have an account?',
+                style: Styles.textStyle16.copyWith(
+                  fontWeight: FontWeight.normal,
+                ),
+              ),
+              const SizedBox(width: 4),
+              TextButton(
+                onPressed: () {
+                  // TODO: navigate to signup screen
+                },
+                child: const Text('Sign up', style: Styles.textStyle16),
+              ),
+            ],
+          ),
         ],
       ),
     );

@@ -1,4 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/core/styles/styles.dart';
+import 'package:flutter_application_1/core/widgets/custom_elevated_button.dart';
 import 'package:flutter_application_1/core/widgets/custom_password_text_field.dart';
 import 'package:flutter_application_1/core/widgets/custom_text_form_field.dart';
 
@@ -40,7 +44,35 @@ class _SignInFormState extends State<SignInForm> {
             hintText: 'Enter your password',
             warningText: 'Please enter your password!',
           ),
-          
+          const SizedBox(height: 20),
+
+          Align(
+            alignment: Alignment.centerLeft,
+            child: TextButton(
+              onPressed: () {},
+              child: const Text('Forgot password?', style: Styles.textStyle16),
+            ),
+          ),
+
+          const SizedBox(height: 6),
+
+          CustomElevatedButton(
+            backgroundColor: Colors.red,
+            foregroundColor: Colors.white,
+            label: 'Sign in',
+            onPressed: () {
+              final bool isValid = _formKey.currentState!.validate();
+              if (isValid) {
+                log(_emailController.text);
+                log(_passwordController.text);
+                // TODO: add signin method
+                // context.read<AuthCubit>().signin(
+                //   email: emailController.text.trim(),
+                //   password: passwordController.text,
+                // );
+              }
+            },
+          ),
         ],
       ),
     );
