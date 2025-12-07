@@ -75,15 +75,6 @@ class _SignUpFormState extends State<SignUpForm> {
             label: 'Confirm password',
             hintText: 'Enter your password',
             warningText: ' Please confirm  your password!',
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter your password!';
-              }
-              if (value != _passwordController.text) {
-                return 'Passwords do not match!!';
-              }
-              return null;
-            },
           ),
           const SizedBox(height: 20),
 
