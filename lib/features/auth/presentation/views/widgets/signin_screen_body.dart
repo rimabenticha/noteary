@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/styles/styles.dart';
+import 'package:flutter_application_1/core/utils/assets.dart';
 import 'package:flutter_application_1/features/auth/presentation/views/widgets/sign_in_form.dart';
 
 class SigninScreenBody extends StatelessWidget {
@@ -12,6 +13,11 @@ class SigninScreenBody extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(height: MediaQuery.of(context).size.height * 0.085),
+
+          const Image(
+            image: AssetImage(AssetsData.signInIllustration),
+            width: 200,
+          ),
 
           Text(
             'Sign in',

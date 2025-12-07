@@ -57,8 +57,6 @@ class _SignInFormState extends State<SignInForm> {
           const SizedBox(height: 6),
 
           CustomElevatedButton(
-            backgroundColor: Colors.red,
-            foregroundColor: Colors.white,
             label: 'Sign in',
             onPressed: () {
               final bool isValid = _formKey.currentState!.validate();
