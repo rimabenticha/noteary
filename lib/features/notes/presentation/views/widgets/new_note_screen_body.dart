@@ -34,6 +34,7 @@ class _NewNoteScreenBodyState extends State<NewNoteScreenBody> {
           onResult: (result) {
             setState(() {
               _textController.text = result.recognizedWords;
+              log(_textController.text);
               _textController.selection = TextSelection.fromPosition(
                 TextPosition(offset: _textController.text.length),
               );
@@ -61,27 +62,29 @@ class _NewNoteScreenBodyState extends State<NewNoteScreenBody> {
       padding: kPadd16,
       child: Stack(
         children: [
-          TextField(
-            controller: _textController,
-            maxLines: null,
-            keyboardType: TextInputType.multiline,
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              hintText: "Votre note apparaîtra ici...",
-            ),
-          ),
-          Positioned(
-            bottom: 20,
-            left: 0,
-            right: 0,
-            child: Center(
-              child: FloatingActionButton(
-                backgroundColor: _isListening ? Colors.red : Colors.blue,
-                onPressed: _listen,
-                child: Icon(_isListening ? Icons.mic : Icons.mic_none),
+          Expanded(
+            child: TextField(
+              controller: _textController,
+              maxLines: null,
+              keyboardType: TextInputType.multiline,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: "Votre note apparaîtra ici...",
               ),
             ),
           ),
+          // Positioned(
+          //   bottom: 20,
+          //   left: 0,
+          //   right: 0,
+          //   child: Center(
+          //     child: FloatingActionButton(
+          //       backgroundColor: _isListening ? Colors.red : Colors.blue,
+          //       onPressed: _listen,
+          //       child: Icon(_isListening ? Icons.mic : Icons.mic_none),
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );
