@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/features/contenu/presentation/views/contenu_screen.dart';
+import 'package:flutter_application_1/core/utils/app_router.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeGridViewItem extends StatelessWidget {
   const HomeGridViewItem({super.key});
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const ContenuScreen()),
-        );
-      },
+      onTap: () => context.push(AppRouter.kNoteConentScreen),
       child: const Card(
         child: Padding(
           padding: EdgeInsets.all(8),
