@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/features/home/presentation/views/widgets/home_screen_body.dart';
-import 'package:flutter_application_1/features/notes/presentation/views/note_screen.dart';
+import 'package:flutter_application_1/features/notes/presentation/views/new_note_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const NoteScreen()),
+            MaterialPageRoute(builder: (context) => const NewNoteScreen()),
           );
         },
         child: const Icon(Icons.add, size: 36),

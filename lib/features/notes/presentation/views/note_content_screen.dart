@@ -7,9 +7,7 @@ class NoteContentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Ad Content', style: TextStyle(fontSize: 26)),
-      ),
+      appBar: AppBar(title: const Text('Ad Content')),
       body: const NoteContentScreenBody(),
     );
   }
