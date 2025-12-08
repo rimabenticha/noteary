@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/styles/styles.dart';
-import 'package:flutter_application_1/core/utils/assets.dart';
+import 'package:flutter_application_1/features/auth/presentation/views/signin_screen.dart';
 import 'package:flutter_application_1/features/auth/presentation/views/widgets/sign_up_form.dart';
 
 class SignupScreenBody extends StatelessWidget {
@@ -18,12 +18,32 @@ class SignupScreenBody extends StatelessWidget {
             style: Styles.textStyle28.copyWith(fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 10),
-          const Image(
-            image: AssetImage(AssetsData.signInIllustration),
-            width: 250,
-          ),
 
           const SignUpForm(),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Do you have an account?',
+                style: Styles.textStyle16.copyWith(
+                  fontWeight: FontWeight.normal,
+                ),
+              ),
+              const SizedBox(width: 4),
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SigninScreen(),
+                    ),
+                  );
+                },
+                child: const Text('Sign in', style: Styles.textStyle16),
+              ),
+            ],
+          ),
 
           const SizedBox(height: 4),
 

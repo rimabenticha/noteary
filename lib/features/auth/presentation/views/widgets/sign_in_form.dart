@@ -1,10 +1,12 @@
-import 'dart:developer';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/styles/styles.dart';
+//import 'package:flutter_application_1/core/utils/service_locator.dart';
 import 'package:flutter_application_1/core/widgets/custom_elevated_button.dart';
 import 'package:flutter_application_1/core/widgets/custom_password_text_field.dart';
 import 'package:flutter_application_1/core/widgets/custom_text_form_field.dart';
+import 'package:flutter_application_1/features/navigation_menu.dart';
+//import 'package:flutter_application_1/features/auth/data/repos/auth_repo_impl.dart';
 
 class SignInForm extends StatefulWidget {
   const SignInForm({super.key});
@@ -17,6 +19,8 @@ class _SignInFormState extends State<SignInForm> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  // final AuthRepoImpl _authRepo = getIt.get<AuthRepoImpl>();
 
   @override
   void dispose() {
@@ -58,16 +62,44 @@ class _SignInFormState extends State<SignInForm> {
 
           CustomElevatedButton(
             label: 'Sign in',
-            onPressed: () {
+            backgroundColor: Colors.blue, // couleur du bouton
+            foregroundColor: Colors.white, // couleur du texte
+            onPressed: () async {
               final bool isValid = _formKey.currentState!.validate();
               if (isValid) {
-                log(_emailController.text);
-                log(_passwordController.text);
-                // TODO: add signin method
-                // context.read<AuthCubit>().signin(
-                //   email: emailController.text.trim(),
-                //   password: passwordController.text,
-                // );
+                try {
+                  // Connexion avec Firebase Auth
+                  final userCredential = await FirebaseAuth.instance
+                      .signInWithEmailAndPassword(
+                        email: _emailController.text.trim(),
+                        password: _passwordController.text.trim(),
+                      );
+
+                  // Si la connexion est réussie, naviguer vers HomeScreen
+                  if (userCredential.user != null) {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const NavigationMenu(),
+                      ),
+                    );
+                  }
+                } on FirebaseAuthException catch (e) {
+                  // Gestion des erreurs
+                  String message = '';
+                  if (e.code == 'user-not-found') {
+                    message = 'Utilisateur non trouvé.';
+                  } else if (e.code == 'wrong-password') {
+                    message = 'Mot de passe incorrect.';
+                  } else {
+                    message = 'Erreur : ${e.message}';
+                  }
+
+                  // Affichage d'un SnackBar pour l'erreur
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(SnackBar(content: Text(message)));
+                }
               }
             },
           ),

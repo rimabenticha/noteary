@@ -40,17 +40,9 @@ class _SignUpFormState extends State<SignUpForm> {
         children: [
           CustomTextFormField(
             textController: _nomController,
-            label: 'First name',
+            label: 'Full name',
             hintText: 'Enter your first name',
             warningText: 'Please enter your first name!',
-          ),
-          const SizedBox(height: 15),
-
-          CustomTextFormField(
-            textController: _prenomController,
-            label: 'Name',
-            hintText: 'Enter your name',
-            warningText: 'Please enter your name !',
           ),
           const SizedBox(height: 15),
 
@@ -79,7 +71,9 @@ class _SignUpFormState extends State<SignUpForm> {
           const SizedBox(height: 20),
 
           CustomElevatedButton(
-            label: 'Sign Up',
+            label: 'Sign up',
+            backgroundColor: Colors.blue,
+            foregroundColor: Colors.white,
             onPressed: () {
               final bool isValid = _formKey.currentState!.validate();
               if (isValid) {

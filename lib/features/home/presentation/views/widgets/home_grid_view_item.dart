@@ -1,15 +1,16 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/features/contenu/presentation/views/contenu_screen.dart';
 
 class HomeGridViewItem extends StatelessWidget {
   const HomeGridViewItem({super.key});
-
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        log('Card is pressed');
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const ContenuScreen()),
+        );
       },
       child: const Card(
         child: Padding(

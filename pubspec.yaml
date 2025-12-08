@@ -43,6 +43,7 @@ dependencies:
   dartz: ^0.10.1
   dio: ^5.9.0
   get_it: ^9.2.0
+  speech_to_text: ^7.3.0
 
 
 

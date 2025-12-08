@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/styles/styles.dart';
 import 'package:flutter_application_1/core/utils/assets.dart';
+import 'package:flutter_application_1/features/auth/presentation/views/signup_screen.dart';
 import 'package:flutter_application_1/features/auth/presentation/views/widgets/sign_in_form.dart';
+import 'package:flutter_application_1/features/navigation_menu.dart';
 
 class SigninScreenBody extends StatelessWidget {
   const SigninScreenBody({super.key});
@@ -39,9 +41,26 @@ class SigninScreenBody extends StatelessWidget {
               const SizedBox(width: 4),
               TextButton(
                 onPressed: () {
-                  // TODO: navigate to signup screen
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SignupScreen(),
+                    ),
+                  );
                 },
                 child: const Text('Sign up', style: Styles.textStyle16),
+              ),
+
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const NavigationMenu(),
+                    ),
+                  );
+                },
+                child: const Text('Home', style: Styles.textStyle16),
               ),
             ],
           ),
